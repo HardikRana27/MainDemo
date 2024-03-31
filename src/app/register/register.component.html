@@ -1,0 +1,83 @@
+<div
+  class="container"
+  style="
+    min-height: 560px;
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-family: 'Londrina Solid', cursive;
+  "
+>
+  <div class="row justify-content-center" style="padding-top: 4%">
+    <div class="col-lg-5">
+      <div class="card shadow-lg border-0 rounded-lg mt-5">
+        <div class="card-header" style="background-color: #c5c6c7">
+          <h2
+            style="
+              text-align: center;
+              font-family: 'Big Shoulders Stencil Display', cursive;
+              font-family: 'Londrina Solid', cursive;
+            "
+          >
+            Registration
+          </h2>
+        </div>
+        <div class="card-body shadow-lg" style="background-color: #1f2833">
+          <form (submit)="userRegistration(f)" #f="ngForm">
+            <div class="row">
+              <div class="col">
+                <div class="form-floating mb-3">
+                  <input
+                    class="form-control"
+                    id="inputfname"
+                    #firstname="ngModel"
+                    name="Fname"
+                    ngModel
+                    type="text"
+                    placeholder="fname"
+                    required
+                    minlength="3"
+                  />
+                  <label for="fname">First Name</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-floating mb-3">
+                  <input
+                    class="form-control"
+                    id="inputlname"
+                    #lastname="ngModel"
+                    name="lname"
+                    type="text"
+                    placeholder="lname"
+                    ngModel
+                    required
+                  />
+                  <label for="lname">Last Name</label>
+                </div>
+              </div>
+            </div>
+            <p
+              class="alert alert-danger"
+              *ngIf="firstname.errors?.['required'] && firstname.touched"
+            >
+              Please enter the First Name
+            </p>
+            <p
+              class="alert alert-danger"
+              *ngIf="firstname.errors?.['minlength'] && firstname.touched"
+            >
+              Please enter Min 3 characters
+            </p>
+            <!-- Remaining form fields and error messages -->
+          </form>
+        </div>
+        <div class="card-footer text-center py-3">
+          <div class="small">
+            <a routerLink="/login" style="color: #1f2833"
+              >Have an account? Login</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

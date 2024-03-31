@@ -1,0 +1,341 @@
+<div class="container" style="min-height: 560px">
+  <div class="row justify-content-center" style="padding-top: 4%">
+    <div class="col-lg-5">
+      <div class="card shadow-lg border-0 rounded-lg mt-5">
+        <div class="card-header bg-light">
+          <h2 class="text-center">Add members</h2>
+          <h5>{{ msg }}</h5>
+        </div>
+        <div class="card-body shadow-lg" style="background-color: #1f2833">
+          <form (submit)="addUser(f)" #f="ngForm">
+            <div class="row">
+              <div class="col">
+                <div class="form-floating mb-3">
+                  <input
+                    class="form-control"
+                    id="inputfname"
+                    name="Fname"
+                    ngModel
+                    type="text"
+                    placeholder="fname"
+                    required
+                    minlength="3"
+                    #firstname="ngModel"
+                  />
+                  <label for="fname">First Name</label>
+                  <p
+                    class="alert alert-danger"
+                    *ngIf="firstname.errors?.['required'] && firstname.touched"
+                  >
+                    Please enter the First Name
+                  </p>
+                  <p
+                    class="alert alert-danger"
+                    *ngIf="firstname?.errors?.['minlength'] && firstname.touched"
+                  >
+                    Please enter Min 3 characters
+                  </p>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-floating mb-3">
+                  <input
+                    class="form-control"
+                    id="inputlname"
+                    name="lname"
+                    ngModel
+                    type="text"
+                    placeholder="lname"
+                    required
+                    #lastname="ngModel"
+                  />
+                  <label for="lname">Last Name</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-floating mb-3">
+                  <input
+                    class="form-control"
+                    id="age"
+                    name="userage"
+                    ngModel
+                    type="number"
+                    placeholder="age"
+                    required
+                    #userage="ngModel"
+                  />
+                  <label for="age">Age</label>
+                  <p
+                    class="alert alert-danger"
+                    *ngIf="userage.errors?.['required'] && userage.touched"
+                  >
+                    Please enter the age
+                  </p>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check" style="margin-top: 10px">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    id="flexRadioDefault1"
+                    ngModel
+                    required
+                    #usergender="ngModel"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1"
+                    >Male</label
+                  >
+                </div>
+                <div class="form-check" style="margin-top: 10px">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    id="flexRadioDefault2"
+                    ngModel
+                    required
+                    #usergender="ngModel"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault2"
+                    >Female</label
+                  >
+                  <p
+                    class="alert alert-danger"
+                    *ngIf="usergender.errors?.['required'] && usergender.touched"
+                  >
+                    Please select the gender
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                id="inputphone"
+                name="userphone"
+                ngModel
+                type="text"
+                placeholder="Phone Number"
+                required
+                pattern="^(0|[1-9][0-9]*)$"
+                maxlength="10"
+                #userphone="ngModel"
+              />
+              <label for="inputphone">Phone Number</label>
+              <p
+                class="alert alert-danger"
+                *ngIf="userphone.errors?.['required'] && userphone.touched"
+              >
+                Please enter the Phone number
+              </p>
+              <p
+                class="alert alert-danger"
+                *ngIf="userphone.errors?.['pattern']"
+              >
+                Please enter a valid phone number
+              </p>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                id="inputEmail"
+                name="uemail"
+                ngModel
+                type="email"
+                placeholder="name@example.com"
+                required
+                email
+                #uemail="ngModel"
+              />
+              <label for="inputEmail">Email address</label>
+              <p
+                class="alert alert-danger"
+                *ngIf="uemail.errors?.['required'] && uemail.touched"
+              >
+                Please enter the Email
+              </p>
+              <p
+                class="alert alert-danger"
+                *ngIf="uemail.errors?.['email'] && uemail.touched"
+              >
+                Please enter a valid Email
+              </p>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                id="inputPassword"
+                name="userpass"
+                ngModel
+                type="password"
+                placeholder="Password"
+                required
+                minlength="8"
+                #userpass="ngModel"
+              />
+              <label for="inputPassword">Create Password</label>
+              <p
+                class="alert alert-danger"
+                *ngIf="userpass.errors?.['required'] && userpass.touched"
+              >
+                Please Create a password
+              </p>
+              <p
+                class="alert alert-danger"
+                *ngIf="userpass.errors?.['minlength']"
+              >
+                Please Create a strong password (min 8 character)
+              </p>
+            </div>
+            <h4 style="color: aqua; margin: 1vw">Package</h4>
+            <select
+              class="form-select form-select-lg mb-3"
+              name="pack"
+              ngModel
+              aria-label=".form-select-lg example"
+              placeholder="Select Package"
+            >
+              <option selected>Select Package</option>
+              <option value="Calisthenic">Calisthenic</option>
+              <option value="Gymnasium">Gymnasium</option>
+              <option value="Cross Fitness">Cross Fitness</option>
+              <option value="Kickboxing">Kickboxing</option>
+              <option value="Cardio">Cardio</option>
+              <option value="Sports">Sports</option>
+            </select>
+            <h4 style="color: aqua; margin: 1vw">Level</h4>
+            <div
+              class="form-check"
+              style="display: inline-block; color: #c5c6c7; margin-left: 2vw"
+            >
+              <input
+                class="form-check-input"
+                type="radio"
+                name="level"
+                #level="ngModel"
+                id="gridRadios1"
+                value="Beginner"
+                checked
+                ngModel
+              />
+              <label class="form-check-label" for="level"> Beginner </label>
+            </div>
+            <div
+              class="form-check"
+              style="display: inline-block; color: #c5c6c7; margin-left: 2vw"
+            >
+              <input
+                class="form-check-input"
+                type="radio"
+                name="level"
+                #level="ngModel"
+                id="gridRadios2"
+                value="Intermediate"
+                ngModel
+              />
+              <label class="form-check-label" for="level"> Intermediate </label>
+            </div>
+            <div
+              class="form-check"
+              style="display: inline-block; color: #c5c6c7; margin-left: 2vw"
+            >
+              <input
+                class="form-check-input"
+                type="radio"
+                name="level"
+                #level="ngModel"
+                id="gridRadios3"
+                value="Advanced"
+                ngModel
+              />
+              <label class="form-check-label" for="level"> Advanced </label>
+            </div>
+            <div>
+              <h4 style="color: aqua; margin: 1vw">Adds on</h4>
+              <div
+                class="form-check"
+                style="display: inline-block; color: #c5c6c7; margin-left: 2vw"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="flexCheckDefault"
+                  ngModel
+                  value="Steambath"
+                  name="isbath"
+                />
+                <label class="form-check-label" for="flexCheckDefault"
+                  >Steambath</label
+                >
+              </div>
+              <div
+                class="form-check"
+                style="display: inline-block; color: #c5c6c7; margin-left: 2vw"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  ngModel
+                  value="DietPlan"
+                  name="isdietplan"
+                  id="flexCheckDefault"
+                />
+                <label class="form-check-label" for="flexCheckDefault"
+                  >DietPlan</label
+                >
+              </div>
+              <div
+                class="form-check"
+                style="display: inline-block; color: #c5c6c7; margin-left: 2vw"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="flexCheckDefault"
+                  ngModel
+                  value="PersonalTrainer"
+                  name="istrain"
+                />
+                <label class="form-check-label" for="flexCheckDefault"
+                  >PersonalTrainer</label
+                >
+              </div>
+            </div>
+            <div
+              class="d-flex align-items-center justify-content-between mt-4 mb-0"
+            >
+              <button
+                class="btn btn-info btn-block"
+                value="Register"
+                type="submit"
+                [disabled]="f.invalid || !useremailavail"
+              >
+                Register
+              </button>
+              <h5 style="color: aqua">{{ msg }}</h5>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer text-center py-3">
+          <p class="card-text">
+            <small class="text-muted">Hustle Fitness</small>
+          </p>
+          <button
+            class="btn btn-info me-md-2"
+            type="button"
+            routerLink="/manager"
+            style="border: solid #1f2833; margin: 1vw"
+          >
+            Back
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
